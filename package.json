@@ -1,0 +1,49 @@
+{
+    "name": "@armathai/quark-core",
+    "version": "0.0.0-alpha.0",
+    "description": "core functionality for quark vfx system",
+    "main": "dist/quark-core.cjs.js",
+    "module": "dist/quark-core.esm.js",
+    "types": "dist/types/index.d.ts",
+    "scripts": {
+        "build": "rollup -c",
+        "dev": "rollup -c -w",
+        "test": "jest --config jestconfig.json",
+        "lint": "tsc && eslint '*/**/*.{js,ts,ts}' --fix",
+        "prepare": "npm run build --scripts-prepend-node-path",
+        "prepublishOnly": "npm test && npm run lint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/armathai/quark-core.git"
+    },
+    "keywords": [
+        "vfx"
+    ],
+    "author": "Armathai LLC",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/armathai/quark-core/issues"
+    },
+    "homepage": "https://github.com/armathai/quark-core#readme",
+    "files": [
+        "dist/**/*"
+    ],
+    "devDependencies": {
+        "@types/jest": "^27.0.1",
+        "@typescript-eslint/eslint-plugin": "^4.31.0",
+        "@typescript-eslint/parser": "^4.31.0",
+        "esbuild": "^0.12.25",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "jest": "^27.1.0",
+        "prettier": "^2.3.2",
+        "rollup": "^2.56.3",
+        "rollup-plugin-dts": "^4.0.0",
+        "rollup-plugin-esbuild": "^4.5.0",
+        "ts-jest": "^27.0.5",
+        "tslib": "^2.3.1",
+        "typescript": "^4.4.2"
+    }
+}
