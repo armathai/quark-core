@@ -9,12 +9,12 @@ export class GravityWell extends Effect {
     private _centerPoint: Vector2D;
     private _force: number;
 
-    public constructor(centerPoint: Vector2D, force: number, life: number, easing: string | EaseFunction) {
+    public constructor(centerPoint?: Vector2D, force = 100, life?: number, easing?: string | EaseFunction) {
         super(life, easing);
 
         this._distanceVec = new Vector2D();
         this._centerPoint = initValue(centerPoint, new Vector2D());
-        this._force = initValue(normalizeValue(force), 100);
+        this._force = normalizeValue(force);
     }
 
     public initialize(particle: Particle): void {
@@ -26,7 +26,6 @@ export class GravityWell extends Effect {
 
         this._distanceVec.set(this._centerPoint.x - position.x, this._centerPoint.y - position.y);
         const distanceSq = this._distanceVec.lengthSq();
-
         if (distanceSq !== 0) {
             const distance = this._distanceVec.length();
             const factor = (this._force * time) / (distanceSq * distance);
