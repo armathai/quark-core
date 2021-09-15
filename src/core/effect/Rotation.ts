@@ -11,16 +11,14 @@ export class Rotation extends Effect {
     private _style: string;
 
     public constructor(
-        influence: number | RangeValue,
-        b = influence,
-        style: string,
+        influenceOrStart: number | RangeValue,
+        end = influenceOrStart,
         life?: number,
         easing?: string | EaseFunction,
     ) {
         super(life, easing);
-        this._start = RangeValue.createValue(initValue(influence, 0));
-        this._end = RangeValue.createValue(initValue(b, 0));
-        this._style = initValue(style, 'to');
+        this._start = RangeValue.createValue(initValue(influenceOrStart, 0));
+        this._end = RangeValue.createValue(initValue(end, 0));
     }
 
     public initialize(particle: Particle): void {
@@ -34,15 +32,7 @@ export class Rotation extends Effect {
         const { auxiliaryEffect, effect } = particle;
         const { rotationA, rotationB } = auxiliaryEffect;
 
-        if (rotationA === rotationB) {
-            return;
-        }
-
-        if (this._style === 'to' || this._style === 'TO' || this._style === '_') {
-            effect.rotation += rotationB + (rotationA - rotationB) * this.$energy;
-        } else {
-            effect.rotation += rotationB;
-        }
+        effect.rotation = rotationA === rotationB ? rotationA * this.$energy : rotationB * this.$energy;
 
         //TODO: fix this
         //  else if (this.a.a === 'V' || this.a.a === 'Velocity' || this.a.a === 'v') {
