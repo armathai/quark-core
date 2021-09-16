@@ -1,16 +1,14 @@
 import { doublePI, halfPI } from '../../constants';
 import { Vector2D } from '../../geometry/Vector2D';
+import { CrossType } from '../../types';
 import { Particle } from '../Particle';
-import { CrossType } from './CrossType';
 import { Zone } from './Zone';
 
 export class CircleZone extends Zone {
     public x: number;
     public y: number;
     public radius: number;
-    public angle: number;
     public center: Vector2D;
-    public randomRadius: number;
 
     public constructor(x: number, y: number, radius: number, crossType?: CrossType) {
         super(crossType);
@@ -19,17 +17,21 @@ export class CircleZone extends Zone {
         this.y = y;
         this.radius = radius;
 
-        this.angle = 0;
         this.center = new Vector2D(x, y);
     }
 
-    public get position(): Vector2D {
-        this.angle = doublePI * Math.random();
-        this.randomRadius = Math.random() * this.radius;
+    public get positionIn(): Vector2D {
+        const r = this.radius * Math.sqrt(Math.random());
+        const theta = Math.random() * doublePI;
+        this.$position.x = this.x + r * Math.cos(theta);
+        this.$position.y = this.y + r * Math.sin(theta);
+        return this.$position;
+    }
 
-        this.$position.x = this.x + this.randomRadius * Math.cos(this.angle);
-        this.$position.y = this.y + this.randomRadius * Math.sin(this.angle);
-
+    public get positionOn(): Vector2D {
+        const theta = Math.random() * doublePI;
+        this.$position.x = this.x + this.radius * Math.cos(theta);
+        this.$position.y = this.y + this.radius * Math.sin(theta);
         return this.$position;
     }
 

@@ -1,7 +1,7 @@
 import { Vector2D } from '../../geometry/Vector2D';
+import { CrossType } from '../../types';
 import { initValue } from '../../utils/index';
 import { Particle } from '../Particle';
-import { CrossType } from './CrossType';
 import { Zone } from './Zone';
 
 export class LineZone extends Zone {
@@ -52,13 +52,17 @@ export class LineZone extends Zone {
         this._direction = initValue(direction, '>');
     }
 
-    public get position(): Vector2D {
+    public get positionIn(): Vector2D {
         const random = Math.random();
 
         this.$position.x = this._x1 + random * this._length * Math.cos(this._gradient);
         this.$position.y = this._y1 + random * this._length * Math.sin(this._gradient);
 
         return this.$position;
+    }
+
+    public get positionOn(): Vector2D {
+        return this.positionIn;
     }
 
     protected $crossingDead(particle: Particle): void {

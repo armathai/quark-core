@@ -1,6 +1,6 @@
 import { Vector2D } from '../../geometry/Vector2D';
+import { CrossType } from '../../types';
 import { Particle } from '../Particle';
-import { CrossType } from './CrossType';
 import { Zone } from './Zone';
 
 export class PointZone extends Zone {
@@ -14,11 +14,15 @@ export class PointZone extends Zone {
         this.y = y;
     }
 
-    public get position(): Vector2D {
+    public get positionIn(): Vector2D {
         this.$position.x = this.x;
         this.$position.y = this.y;
 
         return this.$position;
+    }
+
+    public get positionOn(): Vector2D {
+        return this.positionIn;
     }
 
     public crossing(): void {

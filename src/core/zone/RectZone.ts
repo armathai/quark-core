@@ -1,6 +1,6 @@
 import { Vector2D } from '../../geometry/Vector2D';
+import { CrossType } from '../../types';
 import { Particle } from '../Particle';
-import { CrossType } from './CrossType';
 import { Zone } from './Zone';
 
 export class RectZone extends Zone {
@@ -17,9 +17,28 @@ export class RectZone extends Zone {
         this.height = height;
     }
 
-    public get position(): Vector2D {
+    public get positionIn(): Vector2D {
         this.$position.x = this.x + Math.random() * this.width;
         this.$position.y = this.y + Math.random() * this.height;
+        return this.$position;
+    }
+
+    public get positionOn(): Vector2D {
+        const perimeter = this.width * 2 + this.height * 2;
+        this.$position.x = this.x;
+        this.$position.y = this.y;
+        const dist = Math.random() * perimeter;
+        if (dist <= this.height) {
+            this.$position.y += Math.random() * this.height;
+        } else if (dist <= this.height + this.width) {
+            this.$position.x += Math.random() * this.width;
+        } else if (dist <= this.height * 2 + this.width) {
+            this.$position.y += Math.random() * this.height;
+            this.$position.x += this.width;
+        } else {
+            this.$position.x = Math.random() * this.width + this.x;
+            this.$position.y += this.height;
+        }
         return this.$position;
     }
 

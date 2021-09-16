@@ -1,6 +1,6 @@
 import { Vector2D } from '../../geometry/Vector2D';
+import { CrossType } from '../../types';
 import { Particle } from '../Particle';
-import { CrossType } from './CrossType';
 
 export abstract class Zone {
     protected $position: Vector2D;
@@ -25,7 +25,9 @@ export abstract class Zone {
         }
     }
 
-    public abstract get position(): Vector2D;
+    public abstract get positionIn(): Vector2D;
+
+    public abstract get positionOn(): Vector2D;
 
     protected abstract $crossingDead(particle: Particle): void;
 
