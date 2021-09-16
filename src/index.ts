@@ -9,6 +9,7 @@ export { Force as ForceEffect } from './core/effect/Force';
 export { Gravity as GravityEffect } from './core/effect/Gravity';
 export { GravityWell as GravityWellEffect } from './core/effect/GravityWell';
 export { RandomDrift as RandomDriftEffect } from './core/effect/RandomDrift';
+export { Repulsion as RepulsionEffect } from './core/effect/Repulsion';
 export { Rotation as RotationEffect } from './core/effect/Rotation';
 export { Scale as ScaleEffect } from './core/effect/Scale';
 export { Emitter } from './core/Emitter';
