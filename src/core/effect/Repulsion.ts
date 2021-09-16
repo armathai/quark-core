@@ -10,8 +10,8 @@ export class Repulsion extends Attraction {
         targetPosition: Vector2D,
         force: number,
         radius: number,
-        life: number,
-        easing: string | EaseFunction,
+        life?: number,
+        easing?: string | EaseFunction,
     ) {
         super(targetPosition, force, radius, life, easing);
         this.$force *= -1;
