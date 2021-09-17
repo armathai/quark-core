@@ -10,3 +10,9 @@ export enum CrossType {
     bound = 'bound',
     cross = 'cross',
 }
+
+export enum VelocityZoneVectorType {
+    both = 0,
+    accumulate = -1,
+    spread = 1,
+}
