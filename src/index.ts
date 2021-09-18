@@ -27,6 +27,7 @@ export { ColorValue } from './core/value/ColorValue';
 export { MultipleValue } from './core/value/MultipleValue';
 export { RangeValue } from './core/value/RangeValue';
 export { Rate } from './core/value/Rate';
+export { CircleZone } from './core/zone/CircleZone';
 export { LineZone } from './core/zone/LineZone';
 export { PointZone } from './core/zone/PointZone';
 export { RectZone } from './core/zone/RectZone';
