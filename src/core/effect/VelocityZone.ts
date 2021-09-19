@@ -122,17 +122,30 @@ export class VelocityZone extends Effect {
     }
 
     private _initializeRectFocusedZone(particle: Particle): void {
-        const zone = this._zone as RectZone;
-        const direction = this._direction.get();
+        const centerX = -particle.position.x;
+        const centerY = -particle.position.y;
+        const dV = particle.velocity.length();
+        const m = (0 - centerY) / (0 - centerX);
 
-        if (particle.position.x === zone.x) {
-            particle.velocity.x = -Math.abs(particle.velocity.x) * direction;
-        } else if (particle.position.x === zone.x + zone.width) {
-            particle.velocity.x = Math.abs(particle.velocity.x) * direction;
-        } else if (particle.position.y === zone.y) {
-            particle.velocity.y = -Math.abs(particle.velocity.y) * direction;
-        } else if (particle.position.y === zone.y + zone.height) {
-            particle.velocity.y = Math.abs(particle.velocity.y) * direction;
-        }
+        const x1 = dV / (1 + Math.abs(m));
+        const y1 = m * x1;
+        const x2 = -x1;
+        const y2 = m * x2;
+
+        const points = [
+            [x1, y1],
+            [x2, y2],
+        ];
+
+        const ds = [
+            Math.sqrt(Math.pow(x1 - centerX, 2) + Math.pow(y1 - centerY, 2)),
+            Math.sqrt(Math.pow(x2 - centerX, 2) + Math.pow(y2 - centerY, 2)),
+        ];
+
+        const d = VelocityZone._circleDirectionFunction[this._direction.get()](...ds);
+        const point = points[ds.indexOf(d)];
+
+        particle.velocity.x = point[0];
+        particle.velocity.y = point[1];
     }
 }
