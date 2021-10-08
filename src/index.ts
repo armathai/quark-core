@@ -16,6 +16,7 @@ export { Scale as ScaleEffect } from './core/effect/Scale';
 export { VelocityZone as VelocityZoneEffect } from './core/effect/VelocityZone';
 export { Emitter } from './core/Emitter';
 export { Appearance as AppearanceMeasure } from './core/measure/Appearance';
+export { BlendMode as BlendModeMeasure } from './core/measure/BlendMode';
 export { Life as LifeMeasure } from './core/measure/Life';
 export { Mass as MassMeasure } from './core/measure/Mass';
 export { PolarVelocity as PolarVelocityMeasure } from './core/measure/PolarVelocity';

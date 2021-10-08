@@ -36,9 +36,9 @@ export class Particle {
     private static readonly _defaultEnergy = 1;
     private static readonly _defaultMass = 1;
     private static readonly _defaultRadius = 10;
-    private static readonly _defaultPreviousRadius = 10;
     private static readonly _defaultDead = false;
     private static readonly _defaultSleep = false;
+    private static readonly _defaultBlendMode = 0;
 
     public effect: ParticleEffect = {
         color: { r: Particle._defaultEffectColor, g: Particle._defaultEffectColor, b: Particle._defaultEffectColor },
@@ -60,6 +60,7 @@ export class Particle {
     public radius = Particle._defaultRadius;
     public dead = Particle._defaultDead;
     public sleep = Particle._defaultSleep;
+    public blendMode = Particle._defaultBlendMode;
 
     public position: Vector2D = new Vector2D();
     public velocity: Vector2D = new Vector2D();
@@ -94,6 +95,7 @@ export class Particle {
         this.radius = Particle._defaultRadius;
         this.dead = Particle._defaultDead;
         this.sleep = Particle._defaultSleep;
+        this.blendMode = Particle._defaultBlendMode;
 
         this.position.set(0, 0);
         this.velocity.set(0, 0);
