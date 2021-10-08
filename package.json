@@ -1,6 +1,6 @@
 {
     "name": "@armathai/quark-core",
-    "version": "0.0.0-alpha.0",
+    "version": "0.0.0-alpha.1",
     "description": "core functionality for quark vfx system",
     "main": "dist/quark-core.cjs.js",
     "module": "dist/quark-core.esm.js",
