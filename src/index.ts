@@ -1,5 +1,6 @@
 export * from './constants';
 export { Alpha as AlphaEffect } from './core/effect/Alpha';
+export { Animation as AnimationEffect } from './core/effect/Animation';
 export { Attraction as AttractionEffect } from './core/effect/Attraction';
 export { Collision as CollisionEffect } from './core/effect/Collision';
 export { Color as ColorEffect } from './core/effect/Color';

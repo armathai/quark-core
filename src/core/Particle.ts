@@ -19,6 +19,8 @@ type ParticleAuxiliaryEffect = {
     randomDriftTime?: number;
     cangle?: number;
     cyclone?: Vector2D;
+    animationIndex?: number;
+    animationTime?: number;
 };
 
 export class Particle {

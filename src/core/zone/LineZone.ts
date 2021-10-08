@@ -21,7 +21,7 @@ export class LineZone extends Zone {
     private _length: number;
     private _direction: string;
 
-    public constructor(x1: number, y1: number, x2: number, y2: number, direction: string, crossType?: CrossType) {
+    public constructor(x1: number, y1: number, x2: number, y2: number, direction?: string, crossType?: CrossType) {
         super(crossType);
 
         if (x2 - x1 >= 0) {
